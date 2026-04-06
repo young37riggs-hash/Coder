@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "lib": ["ES2022"],
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "declaration": true,
+    "sourceMap": true,
+    "composite": true,
+    "incremental": true
+  },
+  "include": [],
+  "references": [
+    { "path": "packages/core" },
+    { "path": "packages/cli" },
+    { "path": "packages/assistant" }
+  ],
+  "files": []
+}

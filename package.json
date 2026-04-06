@@ -1,0 +1,78 @@
+{
+  "name": "@opentegrate/monorepo",
+  "version": "0.1.0-alpha",
+  "description": "Opentegrate - AI-powered development environment and assistant system",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"pnpm dev:cli\" \"pnpm dev:web\"",
+    "dev:cli": "bun run --cwd packages/cli dev",
+    "dev:web": "bun run --cwd packages/web dev",
+    "dev:desktop": "bun run --cwd packages/desktop dev",
+    "dev:assistant": "bun run --cwd packages/assistant dev",
+    "build": "turbo run build",
+    "build:cli": "bun run --cwd packages/cli build",
+    "build:web": "bun run --cwd packages/web build",
+    "build:assistant": "bun run --cwd packages/assistant build",
+    "test": "vitest run --coverage",
+    "test:watch": "vitest --coverage",
+    "test:unit": "vitest run",
+    "test:e2e": "bun run --cwd packages/app test:e2e",
+    "test:coverage": "vitest run --coverage",
+    "test:coverage:html": "vitest run --coverage --reporter=html",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "clean": "turbo run clean && rm -rf node_modules dist .turbo",
+    "format": "bun run prettier --write .",
+    "format:check": "bun run prettier --check .",
+    "prepare": "husky",
+    "docs": "bun run --cwd packages/docs build"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "concurrently": "^8.2.2",
+    "eslint": "^8.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "husky": "^9.0.0",
+    "prettier": "^3.0.0",
+    "turbo": "^2.0.0",
+    "typescript": "^5.4.0"
+  },
+  "dependencies": {
+    "@opentegrate/core": "workspace:*",
+    "@opentegrate/cli": "workspace:*",
+    "@opentegrate/web": "workspace:*",
+    "@opentegrate/assistant": "workspace:*",
+    "@opentegrate/editor": "workspace:*",
+    "@opentegrate/services": "workspace:*",
+    "zod": "^3.22.4"
+  },
+  "engines": {
+    "bun": ">=1.0.0",
+    "node": ">=20.0.0"
+  },
+  "packageManager": "bun@1.3.11",
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "bun run lint --fix",
+      "bun run format"
+    ],
+    "*.{json,md}": [
+      "bun run format"
+    ]
+  },
+  "resolutions": {
+    "typescript": "^5.4.0"
+  },
+  "trustedDependencies": [
+    "esbuild",
+    "protobufjs",
+    "tree-sitter",
+    "web-tree-sitter"
+  ],
+  "fund": false
+}
